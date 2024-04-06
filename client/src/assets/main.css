@@ -1,0 +1,15 @@
+@import './base.css';
+
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Scribble&display=swap');
+
+.title {
+    text-align: center;
+    font-family: "Rubik Scribble", system-ui;
+    font-weight: 900;
+    font-size: 14vmin;
+}
+
+.text {
+    font-family: "FadedFrontiers", system-ui;
+    font-size: 2.5vmin;
+}
