@@ -10,6 +10,11 @@ export async function get_todos_today() {
     return response.data;
 }
 
+export async function get_todos_not_today() {
+    const response = await axios.get(`http://192.168.178.100:5000/todos/not-today`, {});
+    return response.data;
+}
+
 export async function save_todo(text, date) {
     const response = await axios.post(`http://192.168.178.100:5000/todos`, {text: text, date: date});
     return response.data;

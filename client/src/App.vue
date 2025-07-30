@@ -1,32 +1,19 @@
 <script setup>
+import AgendaWidget from "./components/AgendaWidget.vue";
 import ToDoWidget from "./components/ToDoWidget.vue";
+import WeatherWidget from "./components/WeatherWidget.vue";
 </script>
 
 <template>
-  <div class="text">
+  <div class="text text-base-content">
     <p class="title my-10">omnihans</p>
 
-    <div class="mx-10 mb-5" v-if="weather != null">
-      <p>{{ weather.description }}</p>
-      <p>{{ weather.temperature }}°C</p>
+    <div class="flex flex-row mx-10">
+      <div class="flex flex-col">
+        <WeatherWidget />
+        <AgendaWidget />
+      </div>
+      <ToDoWidget />
     </div>
-
-    <to-do-widget />
   </div>
 </template>
-
-<script>
-import * as api from "./api.js";
-
-export default {
-    data() {
-        return {
-            // weather
-            weather: null,
-        }
-    },
-    async mounted() {
-      this.weather = await api.get_weather();
-    }
-}
-</script>

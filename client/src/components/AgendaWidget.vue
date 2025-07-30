@@ -5,14 +5,14 @@ import ToDoModal from "./ToDoModal.vue";
 <template>
 <div class="card bg-base-200 w-96 shadow-lg m-5">
 <div class="card-body">
-    <p>Das wär auch noch zu tun:</p>
+    <p>Heute steht folgendes an:</p>
     <div class="join join-vertical mx-3">
         <p v-for="t in todos" class="join-item">• {{ t }}</p>
     </div>
     <br>
-    <button class="btn btn-sm bg-base-300 text-lg my-2 mx-8 rounded-full" onclick="todoModal.showModal()">+</button>
+    <button class="btn btn-sm bg-base-300 text-lg my-2 mx-8 rounded-full" onclick="agendaModal.showModal()">+</button>
 
-    <ToDoModal id="todoModal" date-field />
+    <ToDoModal id="agendaModal"/>
 </div>
 </div>
 </template>
@@ -27,7 +27,7 @@ export default {
         }
     },
     async mounted() {
-      this.todos = await api.get_todos_not_today();
+      this.todos = await api.get_todos_today();
     }
 }
 </script>

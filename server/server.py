@@ -54,6 +54,21 @@ def todos_today():
 
     return res
 
+@app.route('/todos/not-today')
+def todos_not_today():
+    today = datetime.today().strftime('%Y-%m-%d')
+
+    connection = sqlite3.connect(database)
+    cursor = connection.cursor()
+    query = f'SELECT (text) FROM todo WHERE date != "{today}"'
+    cursor.execute(query)
+
+    res = list(map(lambda e: e[0], list(cursor.fetchall())))
+    print(res)
+
+    return res
+
+
 @app.route('/todos', methods=['POST'])
 def post_todo():
     text = request.json['text']
