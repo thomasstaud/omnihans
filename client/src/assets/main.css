@@ -1,6 +1,5 @@
-@import './base.css';
-
 @import url('https://fonts.googleapis.com/css2?family=Rubik+Scribble&display=swap');
+@import './base.css';
 
 @font-face {
     font-family: FadedFrontiers;

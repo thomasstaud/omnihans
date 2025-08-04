@@ -6,9 +6,12 @@ import ToDoModal from "./ToDoModal.vue";
 <div class="card bg-base-200 w-96 shadow-lg m-5">
 <div class="card-body">
     <p>Das wär auch noch zu tun:</p>
-    <div class="join join-vertical mx-3">
-        <p v-for="t in todos" class="join-item">• {{ t }}</p>
-    </div>
+    <ul class="list bg-base-100 rounded-box shadow-md mx-3">
+        <li v-for="t in todos" class="list-row">
+            <div>{{ t }}</div>
+            <input type="checkbox" checked="checked" class="checkbox" />
+        </li>
+    </ul>
     <br>
     <button class="btn btn-sm bg-base-300 text-lg my-2 mx-8 rounded-full" onclick="todoModal.showModal()">+</button>
 
