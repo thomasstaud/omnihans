@@ -19,3 +19,9 @@ export async function save_todo(text, date) {
     const response = await axios.post(`http://192.168.178.100:5000/todos`, {text: text, date: date});
     return response.data;
 }
+
+export async function update_todo(todo) {
+    todo.checked = !todo.checked
+    const response = await axios.put(`http://192.168.178.100:5000/todos`, todo);
+    return response.data;
+}

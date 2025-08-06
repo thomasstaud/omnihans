@@ -1,5 +1,4 @@
 <script setup>
-import AgendaWidget from "./components/AgendaWidget.vue";
 import ToDoWidget from "./components/ToDoWidget.vue";
 import WeatherWidget from "./components/WeatherWidget.vue";
 </script>
@@ -11,9 +10,9 @@ import WeatherWidget from "./components/WeatherWidget.vue";
     <div class="flex flex-row mx-10">
       <div class="flex flex-col">
         <WeatherWidget />
-        <AgendaWidget />
+      <ToDoWidget today title="Heute steht folgendes an:"/>
       </div>
-      <ToDoWidget />
+      <ToDoWidget title="Das wär auch noch zu tun:"/>
     </div>
   </div>
 </template>

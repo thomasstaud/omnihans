@@ -18,11 +18,14 @@ lat = config['lat']
 lon = config['lon']
 openweather_api_key = config['openweather_api_key']
 
+# rewrite todos to be a rest service?
+# practice + need all of get, post, put, delete anyway
+
 def setup_db():
     connection = sqlite3.connect(database)
     cursor = connection.cursor()
 
-    query = 'CREATE TABLE IF NOT EXISTS todo (text TEXT, date DATE)'
+    query = 'CREATE TABLE IF NOT EXISTS todo (id INTEGER PRIMARY KEY, text TEXT, date DATE, checked BOOL)'
     print("executing: ", query)
     cursor.execute(query)
 
@@ -46,10 +49,10 @@ def todos_today():
 
     connection = sqlite3.connect(database)
     cursor = connection.cursor()
-    query = f'SELECT (text) FROM todo WHERE date = "{today}"'
+    query = f'SELECT id, text, date, checked FROM todo WHERE date = "{today}"'
     cursor.execute(query)
 
-    res = list(map(lambda e: e[0], list(cursor.fetchall())))
+    res = list(map(lambda e: {'id': e[0], 'text': e[1], 'date': e[2], 'checked': bool(e[3])}, list(cursor.fetchall())))
     print(res)
 
     return res
@@ -60,29 +63,49 @@ def todos_not_today():
 
     connection = sqlite3.connect(database)
     cursor = connection.cursor()
-    query = f'SELECT (text) FROM todo WHERE date != "{today}"'
+    query = f'SELECT id, text, date, checked FROM todo WHERE date != "{today}"'
     cursor.execute(query)
 
-    res = list(map(lambda e: e[0], list(cursor.fetchall())))
+    res = list(map(lambda e: {'id': e[0], 'text': e[1], 'date': e[2], 'checked': bool(e[3])}, list(cursor.fetchall())))
     print(res)
 
     return res
-
 
 @app.route('/todos', methods=['POST'])
 def post_todo():
     text = request.json['text']
     date = request.json['date']
+    checked = False
 
     try:
         connection = sqlite3.connect(database)
         cursor = connection.cursor()
-        query = f'INSERT INTO todo (text, date) VALUES ("{text}", "{date}")'
+        query = f'INSERT INTO todo (text, date, checked) VALUES ("{text}", "{date}", {checked})'
         cursor.execute(query)
         connection.commit()
     except:
         return {'success': False}
     return {'success': True}
+
+@app.route('/todos', methods=['PUT'])
+def put_todo():
+    id = request.json['id']
+    text = request.json['text']
+    date = request.json['date']
+    checked = request.json['checked']
+
+    print(checked)
+
+    try:
+        connection = sqlite3.connect(database)
+        cursor = connection.cursor()
+        query = f'UPDATE todo SET text="{text}", date="{date}", checked={checked} WHERE id={id}'
+        cursor.execute(query)
+        connection.commit()
+    except:
+        return {'success': False}
+    return {'success': True}
+
 
 if __name__ == '__main__':
     setup_db()

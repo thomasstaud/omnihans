@@ -23,6 +23,7 @@ export default {
         return {
             text: null,
             date: this.getDefaultDate(),
+            // what is this for?
             sent: false
         }
     },
