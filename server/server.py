@@ -39,9 +39,20 @@ def weather():
 
     res = {}
     res['description'] = data['weather'][0]['description']
-    res['temperature'] = data['main']['temp']
-
+    res['temperature'] = data['main']['feels_like']
     return res
+
+@app.route('/weather/detailed')
+def detailed_weather():
+    url = f"https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={openweather_api_key}&cnt=5&units=metric&lang=de"
+    print(url)
+    response = requests.get(url)
+    data = json.loads(response.text)
+
+    res = [{'timestamp': x['dt'], 'temperature': x['main']['feels_like']} for x in data['list']]
+    return res
+
+
 
 @app.route('/todos/today')
 def todos_today():

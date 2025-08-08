@@ -39,6 +39,7 @@ export default {
         },
         async save_todo() {
             await api.save_todo(this.text, this.date);
+            this.$emit("todo_added")
             this.sent = true;
 
             this.text = null;

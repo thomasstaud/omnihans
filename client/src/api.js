@@ -5,6 +5,11 @@ export async function get_weather() {
     return response.data;
 }
 
+export async function get_weather_detailed() {
+    const response = await axios.get(`http://192.168.178.100:5000/weather/detailed`, {});
+    return response.data;
+}
+
 export async function get_todos_today() {
     const response = await axios.get(`http://192.168.178.100:5000/todos/today`, {});
     return response.data;
