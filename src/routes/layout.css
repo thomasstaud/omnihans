@@ -1,3 +1,28 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
+
+@import '$lib/styles/fonts.css';
+
+html {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-image: url('@assets/images/texture.jpg');
+    color: darkslategray;
+}
+
+tt {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.title {
+    font-family: 'Modern Romance';
+    font-size: 12rem;
+    color: seagreen;
+}
+
+.subtitle {
+    font-family: 'Courier New', Courier, monospace;
+    text-indent: 4rem;
+    letter-spacing: 4rem;
+    margin-top: -4.5rem;
+}
