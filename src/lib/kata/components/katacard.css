@@ -1,0 +1,31 @@
+.katacard {
+    transition: all 0.2s ease;
+    margin: 2rem;
+    box-shadow: 0 0 6px color-mix(in oklab, var(--color-base-300) 100%, transparent);
+}
+
+.katacard:hover {
+    background-color: color-mix(in oklab, var(--color-base-300) 70%, transparent);
+}
+
+.new-card {
+    /* this is broken, but it removes the background color which is actually good */
+    background-color: hsl(var(--b3) / 0.15);
+}
+
+.new-card:hover {
+    background-color: color-mix(in oklab, var(--color-base-300) 60%, transparent);
+}
+
+.blind-button {
+    cursor: pointer;
+}
+
+.finished-label {
+    /* not working */
+    transition: all 1s ease;
+}
+
+.finished-label:hover {
+    text-decoration: line-through;
+}

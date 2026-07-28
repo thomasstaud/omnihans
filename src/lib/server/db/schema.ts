@@ -1,9 +1,13 @@
 import { integer, sqliteTable, text } from 'drizzle-orm/sqlite-core';
 
-export const task = sqliteTable('task', {
+export const project = sqliteTable('project', {
 	id: text('id')
 		.primaryKey()
 		.$defaultFn(() => crypto.randomUUID()),
+	number: text('number'),
 	title: text('title').notNull(),
-	priority: integer('priority').notNull().default(1)
+	status: integer('status').notNull().default(1),
+	description: text('description'),
+	started: text('started'),
+	finished: text('finished')
 });
