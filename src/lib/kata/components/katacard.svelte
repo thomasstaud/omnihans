@@ -21,20 +21,20 @@
 	<form class="card-body" method="POST" action="?/save" onsubmit={() => isEdited = false}>
 		<input type="hidden" name="id" value={project.id} />
 		<div class="flex">
-			<input bind:value={project.title} name="title" placeholder="neues Projekt" type="text" class="input input-ghost text-xl font-bold header" onblur={projectEdited} />
-			<input bind:value={project.number} name="number" placeholder="#0000" type="text" class="input input-ghost text-xl font-bold header w-24" onblur={projectEdited} />
+			<input bind:value={project.title} name="title" placeholder="neues Projekt" type="text" class="ghost text-xl font-bold header w-60" onblur={projectEdited} />
+			<input bind:value={project.number} name="number" placeholder="#0000" type="text" class="ghost text-xl font-bold header w-24" onblur={projectEdited} />
 		</div>
-		<textarea bind:value={project.description} name="description" class="textarea textarea-ghost" onblur={projectEdited}></textarea>
-		<div class="flex items-end justify-between">
-			<div class="flex items-end gap-2">
+		<textarea bind:value={project.description} name="description" class="ghost w-full" onblur={projectEdited}></textarea>
+		<div class="flex items-end justify-between ml-3">
+			<div class="flex items-end gap-5">
 				<div class="max-w-30">
-					<button type="button" class="text-xs mb-1" onclick={() => {}}>Start</button>
+					<button type="button" class="text-xs mb-1" onclick={() => {}}>Start</button> <br>
 					<input type="hidden" name="started" value={project.started} />
 					<Datepicker bind:selectedDate={project.started} onUpdate={projectEdited} />
 				</div>
 				{#if project.finished}
 					<div class="max-w-30">
-						<button class="text-xs mb-1 blind-button finished-label" onclick={() => project.finished = ""}>Ende</button>
+						<button class="text-xs mb-1 blind-button finished-label" onclick={() => project.finished = ""}>Ende</button> <br>
 						<input type="hidden" name="finished" value={project.finished} />
 						<Datepicker bind:selectedDate={project.finished} onUpdate={projectEdited} />
 					</div>

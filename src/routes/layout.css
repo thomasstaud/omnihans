@@ -2,11 +2,11 @@
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
 
-@import '$lib/styles/fonts.css';
+@import '$lib/shared/styles/fonts.css';
 
 html {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    background-image: url('@assets/images/texture.jpg');
+    background-image: url('@shared/images/texture.jpg');
     color: darkslategray;
 }
 

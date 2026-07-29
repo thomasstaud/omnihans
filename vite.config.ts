@@ -28,7 +28,8 @@ export default defineConfig({
 	],
 	resolve: {
 		alias: {
-			'@assets': path.resolve('./src/lib/assets'),
+			'@shared': path.resolve('./src/lib/shared'),
+			'@kata': path.resolve('./src/lib/kata'),
 		}
 	}
 });

@@ -1,0 +1,36 @@
+
+@font-face {
+    font-family: 'Gloock';
+    src:
+        local('Gloock'),
+        url('@kata/fonts/Gloock-Regular.otf');
+}
+
+.kata {
+    font-weight: 400;
+    font-style: normal;
+    background-color: rgba(0.5, 0.5, 1, 0.85);
+    color: tan;
+}
+
+.bg-text {
+    font-family: 'Gloock', serif;
+    color: tan;
+    font-size: 20rem;
+    user-select: none;
+}
+
+.header {
+    font-family: 'Gloock', serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.exit-btn {
+    font-family: 'Gloock', serif;
+    font-size: 2rem;
+    padding: 0.2rem 1rem 0;
+    border: 0.1rem solid tan;
+    border-radius: 2rem;
+    background-color: rgba(0.5, 0.5, 1, 0.85);
+}

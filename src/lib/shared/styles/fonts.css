@@ -3,12 +3,12 @@
     font-family: 'Modern Romance';
     src:
         local('Modern Romance'),
-        url('../assets/fonts/modern_romance/Modern Romance.otf');
+        url('../fonts/modern_romance/Modern Romance.otf');
 }
 
 @font-face {
     font-family: 'Louis George Café';
     src:
         local('Louis George Café'),
-        url('../assets/fonts/modern_romance/Modern Romance.otf');
+        url('../fonts/modern_romance/Modern Romance.otf');
 }

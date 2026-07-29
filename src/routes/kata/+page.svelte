@@ -1,10 +1,11 @@
 <script lang="ts">
 	import Katacard from '$lib/kata/components/katacard.svelte';
+	import './kata.css';
 	let { data } = $props();
 
 	const today = new Date().toISOString().slice(0, 10);
 	let nextNumber = $derived.by(() => {
-		// TODO: to be safer, find the last project that has a number
+		// TODO: find the highest number over all projects
 		let lastNumber = data.projects[data.projects.length - 1]?.number;
 		let value = parseInt(lastNumber?.slice(1) || "0") + 1;
 		return `#${value.toString().padStart(4, "0")}`;
@@ -17,18 +18,13 @@
 	});
 </script>
 
-<div class="relative min-h-screen" spellcheck="false">
-    <!--eslint-disable-next-line svelte/no-navigation-without-resolve-->
-    <a href="/">omni</a>
-
-	<!-- Background text, kinda not working anymore -->
-    <!--
+<div class="kata relative min-h-screen" spellcheck="false">
+	<!-- Background text -->
 	<div class="fixed inset-0 flex flex-col items-center justify-center">
-		{#each Array(8) as i (i)}
-			<p class="title -my-40">kata</p>
+		{#each Array(8) as _, i}
+			<p class="title bg-text -my-40">kata</p>
 		{/each}
 	</div>
-    -->
 
 	<!-- Projects grid -->
 	<div class="flex flex-wrap justify-center">
@@ -37,5 +33,10 @@
 		{/each}
 
 		<Katacard project={defaultProject} isNew />
+	</div>
+	
+	<div class="fixed text-center w-screen bottom-10">
+		<!--eslint-disable-next-line svelte/no-navigation-without-resolve-->
+		<a class="exit-btn" href="/">omni</a>
 	</div>
 </div>

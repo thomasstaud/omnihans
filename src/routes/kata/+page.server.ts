@@ -44,7 +44,7 @@ export const actions = {
 			});
 		}
 
-		throw redirect(303, '/');
+		throw redirect(303, '/kata');
 	},
 	delete: async ({ request }) => {
         const formData = await request.formData();
@@ -54,6 +54,6 @@ export const actions = {
             await db.delete(project).where(eq(project.id, id));
         }
 
-		throw redirect(303, '/');
+		throw redirect(303, '/kata');
     },
 };

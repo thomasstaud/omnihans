@@ -20,6 +20,6 @@
     </div>
 
     <div class="w-2/7 mt-30">
-        <a href="/kata">kata</a>
+        <a class="underline" href="/kata">kata</a>
     </div>
 </div>
