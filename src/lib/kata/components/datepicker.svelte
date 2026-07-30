@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { page } from '$app/state';
+
 	let { selectedDate = $bindable(), onUpdate = () => {} } = $props();
 
 	const uid = crypto.randomUUID();   // modern browsers
@@ -25,9 +27,10 @@
 <button
 	bind:this={button}
 	popovertarget={popoverId}
-	class="input input-ghost blind-button w-min "
+	class={["input input-ghost w-min", page.data.authorized && "blind-button"]}
 	type="button"
 	style={`anchor-name: ${anchorName}`}
+	disabled={!page.data.authorized}
 >
 	{selectedDate || "+"}
 </button>

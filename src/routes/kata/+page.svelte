@@ -1,6 +1,8 @@
 <script lang="ts">
 	import Katacard from '$lib/kata/components/katacard.svelte';
+	import { page } from '$app/state';
 	import './kata.css';
+
 	let { data } = $props();
 
 	const today = new Date().toISOString().slice(0, 10);
@@ -32,7 +34,9 @@
 			<Katacard {project} />
 		{/each}
 
-		<Katacard project={defaultProject} isNew />
+		{#if page.data.authorized}
+			<Katacard project={defaultProject} isNew />
+		{/if}
 	</div>
 	
 	<div class="fixed text-center w-screen bottom-10">

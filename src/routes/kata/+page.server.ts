@@ -1,18 +1,20 @@
 import { db } from '$lib/server/db';
 import { project } from '$lib/server/db/schema';
-import { redirect } from '@sveltejs/kit';
+import { error, redirect } from '@sveltejs/kit';
 import { eq } from 'drizzle-orm';
 
 export const load = async () => {
 	const allProjects = await db.select().from(project).orderBy(project.started);
 
 	return {
-		projects: allProjects
+		projects: allProjects,
 	};
 };
 
 export const actions = {
-	save: async ({ request }) => {
+	save: async ({ locals, request }) => {
+		if (!locals.authorized) throw error(403);
+
 		const formData = await request.formData();
 
 		const id = formData.get('id') as string;
@@ -46,7 +48,9 @@ export const actions = {
 
 		throw redirect(303, '/kata');
 	},
-	delete: async ({ request }) => {
+	delete: async ({ locals, request }) => {
+		if (!locals.authorized) throw error(403);
+
         const formData = await request.formData();
         const id = formData.get('id') as string;
 
